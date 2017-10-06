@@ -1,12 +1,23 @@
 const mysql = require('mysql')
 
 const getConnection = function () {
-    return mysql.createConnection({
+    let configuracao = {
         host : 'localhost',
         user : 'root',
         password : '123456',
         database : 'teste_node'
-    })
+    }
+
+    if (process.env.NODE_ENV == 'production') {
+        var urlConexao = process.env.CLEARDB_DATABASE_URL
+        var grupos = urlConexao.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?reconnect=true/)
+        configuracao.host = gurpos[3]
+        configuracao.user = gurpos[1]
+        configuracao.password = gurpos[2]
+        configuracao.database = gurpos[4]
+    }
+
+    return mysql.createConnection(configuracao)
 }
 
 module.exports = { getConnection }

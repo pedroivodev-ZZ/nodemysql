@@ -1,11 +1,11 @@
 {
-  "name": "projeto_final",
+  "name": "nodemysql",
   "version": "1.0.0",
   "description": "",
   "main": "loader.js",
   "scripts": {
     "dev": "nodemon",
-    "production": "pm2 start loader.js --name projeto_final"
+    "production": "pm2 start loader.js --name nodemysql"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,9 @@
     "lodash": "^4.17.4",
     "mysql": "^2.14.1",
     "pm2": "^2.5.0"
+  },
+  "engine": {
+    "node": "6.11.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
